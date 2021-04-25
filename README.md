@@ -31,12 +31,13 @@ CITS3403 Assignment: Physics tutor built with jQuery and W3.CSS on the frontend 
 
 # Design
 
-- one page promoting the theme and purpose to users.
-- a registration/login page for new or returning users.
-- one or more pages presenting content to users.
-- one or more pages for users to complete assessments.
-- one page giving feedback to the user.
-- one page showing aggregate results and usage statsitics.
+## First Design
+
+We drew up our wire frame using a free web application called [Figma](https://www.figma.com).
+
+Screen shots of these are stored in the wireframes directory in the root of this repository.
+
+These were for very basic structure of the site, and as such most of the content in the wireframes are placeholder, namely colour choices and text.
 
 # Development
 
