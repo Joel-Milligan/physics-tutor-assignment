@@ -31,6 +31,7 @@ CITS3403 Assignment: Physics tutor built with jQuery and W3.CSS on the frontend 
 
 # Design
 
+
 ## First Design
 
 We drew up our wire frame using a free web application called [Figma](https://www.figma.com).
@@ -47,6 +48,17 @@ For source control management, we used a stripped down version of the "Git Flow"
 We used this as it is an industry standard and scales well to large teams and applications.
 
 # Agile
+
+
+## Project Management
+
+To manage project development, we will be using GitHub's Projects feature.
+
+This manages user stories, and issues in a Kanban style with To Do, In Progress, and Done columns, similar to Jira or Azure DevOps.
+
+We have created 2 projects, one for front end development and one for backend development, for seperation of concerns.
+
+Automation has been setup on these projects to automatically move cards between columns on certain events such as pull requests, merges, or issue creation.
 
 # Architecture
 
