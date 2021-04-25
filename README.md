@@ -31,6 +31,15 @@ CITS3403 Assignment: Physics tutor built with jQuery and W3.CSS on the frontend 
 
 # Design
 
+
+## First Design
+
+We drew up our wire frame using a free web application called [Figma](https://www.figma.com).
+
+Screen shots of these are stored in the wireframes directory in the root of this repository.
+
+These were for very basic structure of the site, and as such most of the content in the wireframes are placeholder, namely colour choices and text.
+
 # Development
 
 ## Git Flow
@@ -39,6 +48,7 @@ For source control management, we used a stripped down version of the "Git Flow"
 We used this as it is an industry standard and scales well to large teams and applications.
 
 # Agile
+
 
 ## Project Management
 
