@@ -31,7 +31,6 @@ CITS3403 Assignment: Physics tutor built with jQuery and W3.CSS on the frontend 
 
 # Design
 
-
 ## First Design
 
 We drew up our wire frame using a free web application called [Figma](https://www.figma.com).
@@ -49,7 +48,6 @@ We used this as it is an industry standard and scales well to large teams and ap
 
 # Agile
 
-
 ## Project Management
 
 To manage project development, we will be using GitHub's Projects feature.
@@ -63,3 +61,11 @@ Automation has been setup on these projects to automatically move cards between 
 # Architecture
 
 # Launching
+
+To launch the web application follow the below list, from top to bottom.
+
+- using bash terminal in root of this repository
+- python3 -m venv venv
+- source venv/bin/activate
+- pip install -r requirements.txt
+- flask run
