@@ -19,4 +19,6 @@ class User(db.Model):
         self.is_admin = is_admin
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return f'<User {self.username}>'
+
+# TODO: Assessment and UserAssessment Tables
