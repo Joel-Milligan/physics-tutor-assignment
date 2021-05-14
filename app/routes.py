@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, request
 from flask.helpers import url_for
 from flask_login import current_user, login_user, login_required
 from werkzeug.urls import url_parse
-from app import app
+from app import app, db
 from app.forms import LoginForm, RegisterForm
 from app.models import User
 
@@ -36,10 +36,15 @@ def login():
 
 @app.route('/register', methods=['POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    
     # Setup registration form
     register_form = RegisterForm()
     if register_form.validate_on_submit():
-        print("registering")
-        print('Register requested for user {}'.format(
-            register_form.username.data))
-        return redirect('/')
+        user = User(username=register_form.username.data, email=register_form.email.data)
+        user.set_password(register_form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('login'))
