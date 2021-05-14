@@ -13,3 +13,6 @@ class RegisterForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
     submit = SubmitField('Register')
+    is_admin = BooleanField('give admin?(only click if you\'re actually an admin😛)')
+
+#class AnswerForm(FlaskForm):
