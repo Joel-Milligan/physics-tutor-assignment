@@ -44,7 +44,7 @@
 <!-- Tab content -->
 <div id="Login" class="tabcontent">
   <h3>Login</h3>
-  <form action="" method="post">
+  <form action="/login" method="post">
     {{ login_form.hidden_tag() }}
     <p>
       {{ login_form.username.label }}<br />
@@ -62,7 +62,7 @@
 
 <div id="Register" class="tabcontent">
   <h3>Register</h3>
-  <form action="" method="post">
+  <form action="/register" method="post">
     {{ register_form.hidden_tag() }}
     <p>
       {{ register_form.username.label }}<br />
