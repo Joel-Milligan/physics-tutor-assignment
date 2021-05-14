@@ -21,7 +21,6 @@ class User(db.Model):
     def __repr__(self) -> str:
         return f'<User {self.username}>'
 
-# TODO: Assessment and UserAssessment Tables
 class Assessment(db.Model):
     id: Integer = db.Column(db.Integer, primary_key=True)
     question: Text = db.Column(db.Text)
@@ -33,3 +32,19 @@ class Assessment(db.Model):
 
     def __repr__(self) -> str:
         return f'<Assessment {self.question}'
+
+class UserAssessment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    assessment_id = db.Column(db.Integer, db.ForeignKey('assessment.id'))
+    completed = db.Column(db.Boolean)
+    correct = db.Column(db.Boolean)
+
+    def __init__(self, user_id, assessment_id, completed, correct):
+        self.user_id = user_id
+        self.assessment_id = assessment_id
+        self.completed = completed
+        self.correct = correct
+
+    def __repr__(self) -> str:
+        return f'<UserAssessment {self.user_id}-{self.assessment_id}'
