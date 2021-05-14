@@ -6,19 +6,14 @@
     <!--User Card -->
     <div class="card float-left" style="width: 18rem">
       <p>placeholder image</p>
-      <img class="card-img-top" src="pasta.jpg" alt="placeholder image" />
       <div class="card-body">
-        <h5 class="card-title">User name</h5>
+        <h5 class="card-title">{{current_user.username}}</h5>
         <p class="card-text">
           <ul>
-              <li>Description</li>
-              <li>Age</li>
-              <li>Sign up date</li>
+              <li>{{current_user.signup_date}}</li>
               <li>Completed Assessments </li>
           </ul>
-
         </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
     <!--Assessment Analytics -->
@@ -27,13 +22,4 @@
         <p>placeholder text</p>
     </div>
 
-    <div>
-        <h2>Assessment 2 Analytics</h2>
-        <p>placeholder text</p>
-    </div>
-
-    <div>
-        <h2>Assessment 3 Analytics</h2>
-        <p>placeholder text</p>
-    </div>
 {% endblock%}
