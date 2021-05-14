@@ -1,5 +1,10 @@
-{% extends "base.html" %} {% block head %}
-<link rel="stylesheet" href="LoginRegisterPage.css" />
+{% extends "base.html" %}
+<!--Block Head-->
+{% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='LoginRegisterPage.css') }}"
+/>
 <script>
   function openTab(evt, TabName) {
     // Declare all variables
@@ -22,7 +27,9 @@
     evt.currentTarget.className += " active";
   }
 </script>
-{% endblock %} {% block content %}
+{% endblock %}
+<!--Block Content-->
+{% block content %}
 
 <!-- Tab links -->
 <div class="tab">
