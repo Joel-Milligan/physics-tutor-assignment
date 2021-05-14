@@ -1,6 +1,8 @@
+from datetime import datetime
 from flask import render_template, flash, redirect, request
 from flask.helpers import url_for
 from flask_login import current_user, login_user, login_required
+from sqlalchemy.sql.functions import now
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegisterForm
@@ -42,8 +44,12 @@ def register():
     # Setup registration form
     register_form = RegisterForm()
     if register_form.validate_on_submit():
-        user = User(username=register_form.username.data, email=register_form.email.data)
-        user.set_password(register_form.password.data)
+        user = User(
+            username=register_form.username.data, 
+            password=register_form.password.data, 
+            is_admin=register_form.is_admin.data, 
+            signup_date=datetime.now())
+        
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')

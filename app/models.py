@@ -14,10 +14,9 @@ class User(UserMixin, db.Model):
     signup_date = db.Column(db.DateTime, default=now())
     is_admin = db.Column(db.Boolean)
 
-    def __init__(self, username: String, password: String, description: String, signup_date: DateTime, is_admin: Boolean) -> None:
+    def __init__(self, username: String, password: String, signup_date: DateTime, is_admin: Boolean) -> None:
         self.username = username
         self.set_password(password)
-        self.description = description
         self.signup_date = signup_date
         self.is_admin = is_admin
 
