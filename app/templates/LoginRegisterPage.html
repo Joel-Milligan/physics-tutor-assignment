@@ -44,29 +44,41 @@
 <!-- Tab content -->
 <div id="Login" class="tabcontent">
   <h3>Login</h3>
-  <form>
-    <label for="username">username:</label><br />
-    <input type="text" id="username" name="username" /><br />
-    <label for="Password">Password:</label><br />
-    <input type="text" id="Password" name="Password" />
-    <br />
-    <input type="submit" />
-    <input type="reset" />
+  <form action="/login" method="post">
+    {{ login_form.hidden_tag() }}
+    <p>
+      {{ login_form.username.label }}<br />
+      {{ login_form.username(size=32) }}
+    </p>
+    <p>
+      {{ login_form.password.label }}<br />
+      {{ login_form.password(size=32) }}
+    </p>
+    <p>{{ login_form.remember_me() }} {{ login_form.remember_me.label }}</p>
+    <p>{{ login_form.submit() }}</p>
+    <input type="reset" value="Refresh" />
   </form>
 </div>
 
 <div id="Register" class="tabcontent">
   <h3>Register</h3>
-  <form>
-    <label for="username">username:</label><br />
-    <input type="text" id="username" name="username" /><br />
-    <label for="Password">Password:</label><br />
-    <input type="text" id="Password" name="Password" /><br />
-    <label for="Confirm Password">Confirm Password:</label><br />
-    <input type="text" id="Confirm Password" name="Confirm Password" />
-    <br />
-    <input type="submit" />
-    <input type="reset" />
+  <form action="/register" method="post">
+    {{ register_form.hidden_tag() }}
+    <p>
+      {{ register_form.username.label }}<br />
+      {{ register_form.username(size=32) }}
+    </p>
+    <p>
+      {{ register_form.password.label }}<br />
+      {{ register_form.password(size=32) }}
+    </p>
+    <p>
+      {{ register_form.confirm_password.label }}<br />
+      {{ register_form.confirm_password(size=32) }}
+    </p>
+    <p>{{ register_form.is_admin() }} {{ register_form.is_admin.label }}</p>
+    <p>{{ register_form.submit() }}</p>
+    <input type="reset" value="Refresh" />
   </form>
 </div>
 
