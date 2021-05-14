@@ -1,1 +1,1 @@
-web: flask db upgrade; flask translate compile; gunicorn physics-tutor:app
+web: flask db upgrade; gunicorn physics-tutor:app
