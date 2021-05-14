@@ -1,25 +1,32 @@
 import sqlalchemy
 from sqlalchemy.sql.functions import now
 from sqlalchemy.sql.sqltypes import Boolean, DateTime, Integer, String, Text
+from werkzeug.security import generate_password_hash, check_password_hash
 from app import db 
 
 class User(db.Model):
-    id: Integer = db.Column(db.Integer, primary_key=True)
-    username: String = db.Column(db.String(255), index=True, unique=True)
-    password: String = db.Column(db.String(255)) # TODO: Hashing
-    description: Text = db.Column(db.Text)
-    signup_date: DateTime = db.Column(db.DateTime, default=now())
-    is_admin: Boolean = db.Column(db.Boolean)
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(255), index=True, unique=True)
+    password = db.Column(db.String(255)) # This is the hashed password
+    description = db.Column(db.Text)
+    signup_date = db.Column(db.DateTime, default=now())
+    is_admin = db.Column(db.Boolean)
 
     def __init__(self, username: String, password: String, description: String, signup_date: DateTime, is_admin: Boolean) -> None:
         self.username = username
-        self.password = password
+        self.set_password(password)
         self.description = description
         self.signup_date = signup_date
         self.is_admin = is_admin
 
     def __repr__(self) -> str:
         return f'<User {self.username}>'
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
 
 class Assessment(db.Model):
     id: Integer = db.Column(db.Integer, primary_key=True)
