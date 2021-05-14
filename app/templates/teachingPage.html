@@ -23,23 +23,74 @@
 </div>
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Lesson 1</a>
-  <a href="#">Lesson 2</a>
+  <a href="#">What is Physics</a>
+  <a href="#"></a>
   <a href="#">Lesson 3</a>
   <a href="#">Lesson 4</a>
 </div>
 <!--Page content -->
 
 <div>
-  <h2>Content Title</h2>
-  <p>content</p>
+  <h2>What is Physics</h2>
+  <p>
+    As stated in the encyclopedia Britannica: Physics is the science that deals
+    with the structure of matter and the interactions between the fundamental
+    constituents of the observable universe. In the broadest sense, physics
+    (from the Greek physikos) is concerned with all aspects of nature on both
+    the macroscopic and submicroscopic levels. Its scope of study encompasses
+    not only the behaviour of objects under the action of given forces but also
+    the nature and origin of gravitational, electromagnetic, and nuclear force
+    fields. Its ultimate objective is the formulation of a few comprehensive
+    principles that bring together and explain all such disparate phenomena.
+  </p>
+  <p>
+    You can find the definition
+    <a href="https://www.britannica.com/science/physics-science">here</a>
+  </p>
 </div>
 <div>
-  <h2>Content Title</h2>
-  <p>content</p>
+  <h2>What are we learning about today</h2>
+  <p>
+    This page is concerned with the basics of kinematics, which is the branch of
+    physics that explains how objects move, and how quantities such as
+    acceleration and velocity interact.
+  </p>
 </div>
 <div>
-  <h2>Content Title</h2>
-  <p>content</p>
+  <h2>The 5 basic quantities</h2>
+  <p>
+    In kinematics, there are 5 quantities that tell us everything we need to
+    know about the moving object.
+  </p>
+  <p>They are:</p>
+  <ul>
+    <li>Displacement: How far the object has moved</li>
+    <li>Initial Velocity: How fast the object was moving</li>
+    <li>Final Velocity: How fast the object is or will be moving</li>
+    <li>Acceleration: How fast the object changes velocity</li>
+    <li>Time: How long the object was moving for</li>
+  </ul>
+  <p>
+    These 5 quantities are often called the SUVAT quantites, as they are
+    commonly represented by those letters
+  </p>
+  <ul>
+    <li>Displacement: S</li>
+    <li>Initial Velocity: U</li>
+    <li>Final Velocity: V</li>
+    <li>Acceleration: A</li>
+    <li>Time: T</li>
+  </ul>
+</div>
+
+<div>
+  <h2>How do these quantites relate?</h2>
+  <p>
+    Thanks to the work of some very clever people, a set of 5 equations were
+    developed. When any 3 of the SUVAT quantites are known, the other 2 can be
+    derived by using the appropriate equations
+  </p>
+  <h3>Kinematic Equations</h3>
+  <img src="{{ url_for('static', filename='equations.jpg') }}" />
 </div>
 {% endblock %}
