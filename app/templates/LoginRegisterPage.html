@@ -65,16 +65,28 @@
   <form action="/register" method="post">
     {{ register_form.hidden_tag() }}
     <p>
-      {{ register_form.username.label }}<br />
-      {{ register_form.username(size=32) }}
+      {{ register_form.username.label }}<br>
+      {{ register_form.username(size=32) }}<br>
+      <!-- Display any errors -->
+      {% for error in register_form.username.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
     </p>
     <p>
-      {{ register_form.password.label }}<br />
-      {{ register_form.password(size=32) }}
+      {{ register_form.password.label }}<br>
+      {{ register_form.password(size=32) }}<br>
+      <!-- Display any errors -->
+      {% for error in register_form.password.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
     </p>
     <p>
-      {{ register_form.confirm_password.label }}<br />
-      {{ register_form.confirm_password(size=32) }}
+      {{ register_form.confirm_password.label }}<br>
+      {{ register_form.confirm_password(size=32) }}<br>
+      <!-- Display any errors -->
+      {% for error in register_form.confirm_password.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
     </p>
     <p>{{ register_form.is_admin() }} {{ register_form.is_admin.label }}</p>
     <p>{{ register_form.submit() }}</p>
