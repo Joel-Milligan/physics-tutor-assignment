@@ -76,6 +76,7 @@
       {{ register_form.confirm_password.label }}<br />
       {{ register_form.confirm_password(size=32) }}
     </p>
+    <p>{{ register_form.is_admin() }} {{ register_form.is_admin.label }}</p>
     <p>{{ register_form.submit() }}</p>
     <input type="reset" value="Refresh" />
   </form>
