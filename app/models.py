@@ -1,4 +1,3 @@
-import sqlalchemy
 from sqlalchemy.sql.functions import now
 from sqlalchemy.sql.sqltypes import Boolean, DateTime, Integer, String, Text
 from  sqlalchemy.sql.expression import func, select
@@ -48,7 +47,7 @@ class Assessment(db.Model):
         return f'<Assessment {self.question}'
 
     def get_random_assessment(self):
-        return select.order_by(func.rand())
+        return Assessment.query.order_by(func.random()).first()
 
 class UserAssessment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
