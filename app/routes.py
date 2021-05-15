@@ -2,7 +2,7 @@ from datetime import datetime
 from flask import render_template, flash, redirect, request
 from flask.helpers import url_for
 from flask_login import current_user, login_user, login_required
-from sqlalchemy.sql.functions import now
+from flask_login.utils import logout_user
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegisterForm
@@ -11,7 +11,7 @@ from app.models import User, Assessment
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html')
+    return render_template('HomePage.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -35,6 +35,10 @@ def login():
 
     return render_template('LoginRegisterPage.html', login_form=login_form, register_form=register_form)
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -61,3 +65,13 @@ def register():
 def assessment():
     assessment = Assessment.get_random_assessment()
     return render_template('AssessmentPage.html', assessment=assessment)
+
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('ProfilePage.html')
+
+@app.route('/content')
+@login_required
+def content():
+    return render_template('TeachingPage.html')
