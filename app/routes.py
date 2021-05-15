@@ -94,8 +94,10 @@ def description():
     description_form = EditProfileForm()
 
     if description_form.validate_on_submit():
-        pass
-
+        current_user.description = description_form.description.data
+        db.session.commit()
+        return redirect(url_for('profile'))
+        
     return render_template('EditDescription.html', description_form=description_form, old_description=current_user.description)
 
 @app.route('/content')
