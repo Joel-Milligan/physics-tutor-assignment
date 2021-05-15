@@ -25,7 +25,7 @@ class User(UserMixin, db.Model):
         return f'<User {self.username}>'
 
     def link_to_assessments(self):
-        assessments: list[Assessment] = Assessment.query().all()
+        assessments: list[Assessment] = db.session.query(Assessment).all()
         for assessment in assessments:
             link = UserAssessment(self.id, assessment.id, False, False)
             db.session.add(link)
@@ -60,7 +60,7 @@ class Assessment(db.Model):
         return f'<Assessment {self.question}'
 
     def link_to_users(self):
-        users: list[User] = User.query().all()
+        users: list[User] = User.query.all()
         for user in users:
             link = UserAssessment(user.id, self.id, False, False)
             db.session.add(link)
