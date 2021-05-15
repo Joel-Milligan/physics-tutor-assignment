@@ -63,8 +63,15 @@ def register():
 
 @app.route('/assessment', methods=['GET','POST'])
 def assessment():
-    assessment = Assessment.get_random_assessment()
+    assessment: Assessment = Assessment.get_random_assessment()
     answer_form = AnswerForm()
+
+    if answer_form.validate_on_submit():
+        if answer_form.answer.data == assessment.answer:
+            flash("Correct!")
+        else:
+            flash("Incorrect!")
+
     return render_template('AssessmentPage.html', assessment=assessment, answer_form=answer_form)
 
 @app.route('/profile')
