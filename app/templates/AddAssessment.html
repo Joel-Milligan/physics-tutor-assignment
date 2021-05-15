@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+<!--page content-->
+{% block content %}
+<form action="/AddAssessment" method="post">
+  <p>
+    {{ AddAssessment_form.question.label }}<br />
+    {{ AddAssessment_form.question() }}
+  </p>
+  <p>
+    {{ AddAssessment_form.answer.label }}<br />
+    {{ AddAssessment_form.answer() }}
+  </p>
+
+  <p>{{ AddAssessment_form.submit() }}</p>
+  <input type="reset" value="Refresh" />
+</form>
+{%endblock%}
