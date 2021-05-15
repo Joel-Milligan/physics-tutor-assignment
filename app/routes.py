@@ -69,6 +69,11 @@ def navigate():
 @app.route('/assessment', methods=['GET','POST'])
 def assessment():
     assessment: Assessment = Assessment.get_new_assessment(current_user.id)
+    
+    if assessment is None:
+        flash("No more assessments!")
+        return redirect(url_for('index' ))
+
     userAssessment: UserAssessment = UserAssessment.query.filter_by(user_id=current_user.id, assessment_id=assessment.id).first()
     answer_form = AnswerForm()
 
