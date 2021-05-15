@@ -56,9 +56,9 @@ def register():
             password=register_form.password.data, 
             is_admin=register_form.is_admin.data, 
             signup_date=datetime.now())
-        user.link_to_assessments()
-        
+
         db.session.add(user)
+        user.link_to_assessments()
         db.session.commit()
         return redirect(url_for('login'))
 
@@ -68,8 +68,8 @@ def navigate():
 
 @app.route('/assessment', methods=['GET','POST'])
 def assessment():
-    assessment: Assessment = Assessment.get_new_assessment()
-    userAssessment: UserAssessment = UserAssessment.query().filter_by(user_id=current_user.id, assessment_id=assessment.id).first()
+    assessment: Assessment = Assessment.get_new_assessment(current_user.id)
+    userAssessment: UserAssessment = UserAssessment.query.filter_by(user_id=current_user.id, assessment_id=assessment.id).first()
     answer_form = AnswerForm()
 
     if answer_form.validate_on_submit():
@@ -128,9 +128,9 @@ def addAssessment():
         assessment = Assessment(
             question=assessment_form.question.data, 
             answer=assessment_form.answer.data)
-        assessment.link_to_users()
 
         db.session.add(assessment)
+        assessment.link_to_users()
         db.session.commit()
         return redirect(url_for('index'))
         
