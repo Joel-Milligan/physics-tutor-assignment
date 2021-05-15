@@ -3,15 +3,25 @@
 <!--Page content -->
 {% block content %}
 <div>
-  <h2>Question</h2>
-  <p>question description</p>
-  <img src="question.jpg" alt="question image" />
+  <h2>Assessment</h2>
+  <p>{{assessment.question}}</p>
 </div>
 
-<form>
-  <label for="Answer">Answer</label><br />
-  <input type="text" id="Answer" name="Answer" /><br />
-  <input type="submit" value="Submit" />
-  <input type="reset" />
+<form action="" method="post">
+  {{ answer_form.hidden_tag() }}
+  <p>
+    {{ answer_form.answer.label }}<br>
+    {{ answer_form.answer(size=32) }}<br>
+  </p>
+  <p>{{ answer_form.submit() }}</p>
 </form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 {% endblock %}
