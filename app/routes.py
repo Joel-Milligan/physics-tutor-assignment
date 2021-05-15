@@ -88,10 +88,10 @@ def profile():
 
     return render_template('ProfilePage.html', num_assessments_completed =num_assessments_completed, num_assessments_correct = num_assessments_correct, percent_correct = percent_correct)
 
-@app.route('/edit-profile', methods=['GET', 'POST'])
+@app.route('/description', methods=['GET', 'POST'])
 @login_required
-def edit_profile():
-    return render_template('EditProfile.html')
+def description():
+    return render_template('EditDescription.html')
 
 @app.route('/content')
 @login_required
