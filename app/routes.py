@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, login_required
 from flask_login.utils import logout_user
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import LoginForm, RegisterForm
+from app.forms import AnswerForm, LoginForm, RegisterForm
 from app.models import User, Assessment
 
 @app.route('/')
@@ -64,7 +64,8 @@ def register():
 @app.route('/assessment', methods=['GET','POST'])
 def assessment():
     assessment = Assessment.get_random_assessment()
-    return render_template('AssessmentPage.html', assessment=assessment)
+    answer_form = AnswerForm()
+    return render_template('AssessmentPage.html', assessment=assessment, answer_form=answer_form)
 
 @app.route('/profile')
 @login_required

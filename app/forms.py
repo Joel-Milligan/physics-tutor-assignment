@@ -23,7 +23,5 @@ class RegisterForm(FlaskForm):
             raise ValidationError('Please use a different username.')
 
 class AnswerForm(FlaskForm):
-    id = IntegerField('Id', validators=[DataRequired()])
-    username = StringField('User', validators=[DataRequired()])
     answer = DecimalField('Answer', validators=[DataRequired()])
-
+    submit = SubmitField('Submit Answer')
