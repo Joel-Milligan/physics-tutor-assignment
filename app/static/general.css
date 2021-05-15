@@ -1,0 +1,27 @@
+body {
+  background-color: #1d557b;
+}
+
+footer {
+  background-color: #1d557b;
+}
+
+.light_gray_background {
+  background-color: lightgrey;
+}
+
+h2 {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+nav {
+  margin-bottom: 0%;
+}
