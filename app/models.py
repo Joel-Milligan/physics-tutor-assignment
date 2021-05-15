@@ -1,6 +1,6 @@
 from sqlalchemy.sql.functions import now
 from sqlalchemy.sql.sqltypes import Boolean, DateTime, Integer, String, Text
-from  sqlalchemy.sql.expression import func, select
+from sqlalchemy.sql.expression import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import db
@@ -28,7 +28,6 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
-
 
 @login.user_loader
 def load_user(id):
