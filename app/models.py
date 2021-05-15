@@ -2,6 +2,7 @@ from sqlalchemy.sql.functions import now
 from sqlalchemy.sql.sqltypes import Boolean, DateTime, Integer, String, Text
 from sqlalchemy.sql.expression import func
 from werkzeug.security import generate_password_hash, check_password_hash
+from hashlib import md5
 from flask_login import UserMixin
 from app import db
 from app import login
@@ -28,6 +29,11 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+    def avatar(self, size):
+        digest = md5(self.username.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
+            digest, size)
 
 @login.user_loader
 def load_user(id):
