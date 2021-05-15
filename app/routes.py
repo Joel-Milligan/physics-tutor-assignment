@@ -36,8 +36,11 @@ def login():
     return render_template('LoginRegisterPage.html', login_form=login_form, register_form=register_form)
 
 
-@app.route('/register', methods=['POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == "GET":
+        return redirect(url_for('login'))
+    
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     
