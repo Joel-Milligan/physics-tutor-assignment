@@ -3,7 +3,7 @@
 {% block head %}
 <link
   rel="stylesheet"
-  href="{{ url_for('static', filename='LoginRegisterPage.css') }}"
+  href="{{ url_for('static', filename='css/LoginRegisterPage.css') }}"
 />
 <script>
   function openTab(evt, TabName) {
@@ -32,66 +32,119 @@
 {% block content %}
 
 <!-- Tab links -->
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Login')" id="defaultOpen">
-    Login
-  </button>
-  <button class="tablinks" onclick="openTab(event, 'Register')">
-    Register
-  </button>
-</div>
+<div class="container card-body" style="margin: auto">
+  <div class="row">
+    <div
+      class="tab col-sm-4 mx-auto"
+      style="
+        border-style: solid;
+        border-color: #c4c4c4;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border: 10px;
+        border-bottom: 0px;
+      "
+    >
+      <div class="row">
+        <button
+          class="tablinks col-sm-6"
+          style="margin: auto"
+          onclick="openTab(event, 'Login')"
+          id="defaultOpen"
+        >
+          Login
+        </button>
+        <button
+          class="tablinks col-sm-6"
+          style="margin: auto"
+          onclick="openTab(event, 'Register')"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </div>
 
-<!-- Tab content -->
-<div id="Login" class="tabcontent">
-  <h3>Login</h3>
-  <form action="/login" method="post">
-    {{ login_form.hidden_tag() }}
-    <p>
-      {{ login_form.username.label }}<br />
-      {{ login_form.username(size=32) }}
-    </p>
-    <p>
-      {{ login_form.password.label }}<br />
-      {{ login_form.password(size=32) }}
-    </p>
-    <p>{{ login_form.remember_me() }} {{ login_form.remember_me.label }}</p>
-    <p>{{ login_form.submit() }}</p>
-    <input type="reset" value="Refresh" />
-  </form>
-</div>
+  <div class="row">
+    <!-- Tab content -->
+    <div
+      id="Login"
+      class="tabcontent col-sm-4"
+      style="
+        margin: auto;
+        border-style: solid;
+        border-color: #f1f1f1;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding-bottom: 10px;
+        border-width: 10px;
+        border-top-width: 0px;
+      "
+    >
+      <h3>Login</h3>
+      <form action="/login" method="post" class="form-group">
+        {{ login_form.hidden_tag() }}
+        <p>
+          {{ login_form.username.label }}<br />
+          {{ login_form.username(size=32,class="form-control") }}
+        </p>
+        <p>
+          {{ login_form.password.label }}<br />
+          {{ login_form.password(size=32,class="form-control") }}
+        </p>
+        <p>{{ login_form.remember_me() }} {{ login_form.remember_me.label }}</p>
+        <p>{{ login_form.submit(class="form-control") }}</p>
+        <input type="reset" value="Refresh" class="form-control" />
+      </form>
+    </div>
 
-<div id="Register" class="tabcontent">
-  <h3>Register</h3>
-  <form action="/register" method="post">
-    {{ register_form.hidden_tag() }}
-    <p>
-      {{ register_form.username.label }}<br />
-      {{ register_form.username(size=32) }}<br />
-      <!-- Display any errors -->
-      {% for error in register_form.username.errors %}
-      <span style="color: red">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ register_form.password.label }}<br />
-      {{ register_form.password(size=32) }}<br />
-      <!-- Display any errors -->
-      {% for error in register_form.password.errors %}
-      <span style="color: red">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>
-      {{ register_form.confirm_password.label }}<br />
-      {{ register_form.confirm_password(size=32) }}<br />
-      <!-- Display any errors -->
-      {% for error in register_form.confirm_password.errors %}
-      <span style="color: red">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>{{ register_form.is_admin() }} {{ register_form.is_admin.label }}</p>
-    <p>{{ register_form.submit() }}</p>
-    <input type="reset" value="Refresh" />
-  </form>
+    <div
+      id="Register"
+      class="tabcontent col-sm-4"
+      style="
+        margin: auto;
+        border-style: solid;
+        border-color: #f1f1f1;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding-bottom: 10px;
+        border-width: 10px;
+        border-top-width: 0px;
+      "
+    >
+      <h3>Register</h3>
+      <form action="/register" method="post" class="form-group">
+        {{ register_form.hidden_tag() }}
+        <p>
+          {{ register_form.username.label }}<br />
+          {{ register_form.username(size=32,class="form-control") }}
+          <!-- Display any errors -->
+          {% for error in register_form.username.errors %}
+          <span style="color: red">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          {{ register_form.password.label }}<br />
+          {{ register_form.password(size=32,class="form-control") }}
+          <!-- Display any errors -->
+          {% for error in register_form.password.errors %}
+          <span style="color: red">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>
+          {{ register_form.confirm_password.label }}<br />
+          {{ register_form.confirm_password(size=32,class="form-control") }}
+          <!-- Display any errors -->
+          {% for error in register_form.confirm_password.errors %}
+          <span style="color: red">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>{{ register_form.is_admin() }} {{ register_form.is_admin.label }}</p>
+        <p>{{ register_form.submit(class="form-control") }}</p>
+        <input type="reset" value="Refresh" class="form-control" />
+      </form>
+    </div>
+  </div>
 </div>
 
 <script>

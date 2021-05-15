@@ -6,6 +6,10 @@ footer {
   background-color: lightgrey;
 }
 
+h1 {
+  color: white;
+}
+
 h2 {
   color: white;
 }
@@ -20,6 +24,25 @@ p {
 
 nav {
   margin-bottom: 0%;
+}
+
+.grey_box {
+  background-color: #c4c4c4;
+  margin: 5%;
+  border-radius: 30px;
+  padding: 5%;
+}
+
+div.grey_box > p {
+  color: black;
+}
+
+div.grey_box > h2 {
+  color: black;
+}
+
+div.grey_box > h3 {
+  color: black;
 }
 
 #page-container {

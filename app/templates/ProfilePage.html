@@ -2,32 +2,50 @@
 
 <!--Page content -->
 {% block content %}
-<div class="card float-left" style="width: 18rem">
-  <img src="{{ current_user.avatar(128) }}" alt="User Profile" width="100%">
-  <div class="card-body">
-    <h5 class="card-title">{{ current_user.username }}'s Stats</h5>
-    <p class="card-text">
-      Signed Up on {{ current_user.signup_date.strftime('%x') }}
-    </p>
-    <h4>Description</h4>
-    <p class="card-text">{{ current_user.description }}</p>
-    <a class="btn btn-primary" href="{{ url_for('description') }}" role="button">Edit Profile</a>
+<div class="container">
+  <div class="row"><h2>Proflie Page: {{current_user.username}}</h2></div>
+  <div class="row">
+    <div class="card col" style="width: 18rem">
+      <img
+        src="{{ current_user.avatar(128) }}"
+        alt="User Profile"
+        width="50%"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ current_user.username }}'s Stats</h5>
+        <p class="card-text" style="color: black">
+          Signed Up on {{ current_user.signup_date.strftime('%x') }}
+        </p>
+        <h4>Description</h4>
+        <p class="card-text" style="color: black">
+          {{ current_user.description }}
+        </p>
+        <a
+          class="btn btn-primary"
+          href="{{ url_for('description') }}"
+          role="button"
+          >Edit Profile</a
+        >
+      </div>
+    </div>
+
+    <!--Assessment Analytics -->
+    <div class="col">
+      <div class="grey_box">
+        <h2>Assessments Completed</h2>
+        <p>{{num_assessments_completed}}</p>
+      </div>
+
+      <div class="grey_box">
+        <h2>Assessments Correct</h2>
+        <p>{{num_assessments_correct}}</p>
+      </div>
+
+      <div class="grey_box">
+        <h2>Percentage Correct</h2>
+        <p>{{ percent_correct }}</p>
+      </div>
+    </div>
   </div>
-</div>
-
-<!--Assessment Analytics -->
-<div>
-  <h2>Assessments Completed</h2>
-  <p>{{num_assessments_completed}}</p>
-</div>
-
-<div>
-  <h2>Assessments Correct</h2>
-  <p>{{num_assessments_correct}}</p>
-</div>
-
-<div>
-  <h2>Percentage Correct</h2>
-  <p>{{ percent_correct }}</p>
 </div>
 {% endblock%}
