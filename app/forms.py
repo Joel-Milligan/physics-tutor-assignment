@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, DecimalField
 from wtforms.validators import ValidationError, DataRequired, EqualTo
 from app.models import User
 
@@ -23,5 +23,6 @@ class RegisterForm(FlaskForm):
             raise ValidationError('Please use a different username.')
 
 class AddAssessmentForm(FlaskForm):
-    question = StringField('Question', validators=[DataRequired()])
-    answer = StringField('Answer', validators=[DataRequired()])
+    question = StringField('Please submit a question', validators=[DataRequired()])
+    answer = DecimalField('Please submit the answer', validators=[DataRequired()])
+    submit = SubmitField('Create Assessment')
