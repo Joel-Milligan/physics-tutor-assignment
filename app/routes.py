@@ -6,7 +6,8 @@ from sqlalchemy.sql.functions import now
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegisterForm
-from app.models import User
+from app.models import User, Assessment
+import random
 
 @app.route('/')
 @login_required
@@ -53,3 +54,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login'))
+
+@app.route('/assessment', methods=['GET','POST'])
+def assessment():
+    assessment = Assessment.get_random_assessment()
+    return render_template('AssessmentPage.html', answer_form=answer_form, assessment = assessment)
