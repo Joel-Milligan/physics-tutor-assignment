@@ -30,3 +30,7 @@ class AddAssessmentForm(FlaskForm):
     question = StringField('Please submit a question', validators=[DataRequired()])
     answer = StringField('Please submit the answer', validators=[DataRequired()])
     submit = SubmitField('Create Assessment')
+
+class EditProfileForm(FlaskForm):
+    description = StringField('Enter a new description')
+    submit = SubmitField('Save')

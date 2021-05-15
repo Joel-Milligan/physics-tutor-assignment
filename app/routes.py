@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, login_required
 from flask_login.utils import logout_user
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import AnswerForm, LoginForm, RegisterForm, AddAssessmentForm
+from app.forms import AnswerForm, LoginForm, RegisterForm, AddAssessmentForm, EditProfileForm
 from app.models import User, Assessment, UserAssessment
 
 @app.route('/')
@@ -87,6 +87,18 @@ def profile():
         percent_correct = num_assessments_correct / num_assessments_completed
 
     return render_template('ProfilePage.html', num_assessments_completed =num_assessments_completed, num_assessments_correct = num_assessments_correct, percent_correct = percent_correct)
+
+@app.route('/description', methods=['GET', 'POST'])
+@login_required
+def description():
+    description_form = EditProfileForm()
+
+    if description_form.validate_on_submit():
+        current_user.description = description_form.description.data
+        db.session.commit()
+        return redirect(url_for('profile'))
+        
+    return render_template('EditDescription.html', description_form=description_form, old_description=current_user.description)
 
 @app.route('/content')
 @login_required
