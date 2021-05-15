@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, DecimalField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, EqualTo
 from app.models import User
 
@@ -25,3 +25,8 @@ class RegisterForm(FlaskForm):
 class AnswerForm(FlaskForm):
     answer = StringField('Answer', validators=[DataRequired()])
     submit = SubmitField('Submit Answer')
+
+class AddAssessmentForm(FlaskForm):
+    question = StringField('Please submit a question', validators=[DataRequired()])
+    answer = StringField('Please submit the answer', validators=[DataRequired()])
+    submit = SubmitField('Create Assessment')
