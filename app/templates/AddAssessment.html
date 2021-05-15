@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+<!--page content-->
+{% block content %}
+<form action="" method="post">
+  {{ assessment_form.hidden_tag() }}
+  <p>
+    {{ assessment_form.question.label }}<br />
+    {{ assessment_form.question() }}
+  </p>
+  <p>
+    {{ assessment_form.answer.label }}<br />
+    {{ assessment_form.answer() }}
+  </p>
+  <p>{{ assessment_form.submit() }}</p>
+</form>
+{%endblock%}

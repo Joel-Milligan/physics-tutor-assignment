@@ -5,8 +5,8 @@ from flask_login import current_user, login_user, login_required
 from flask_login.utils import logout_user
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import LoginForm, RegisterForm
-from app.models import User, UserAssessment
+from app.forms import AnswerForm, LoginForm, RegisterForm, AddAssessmentForm
+from app.models import User, Assessment, UserAssessment
 
 @app.route('/')
 @login_required
@@ -41,8 +41,11 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/register', methods=['POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == "GET":
+        return redirect(url_for('login'))
+    
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     
@@ -58,6 +61,19 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login'))
+
+@app.route('/assessment', methods=['GET','POST'])
+def assessment():
+    assessment: Assessment = Assessment.get_random_assessment()
+    answer_form = AnswerForm()
+
+    if answer_form.validate_on_submit():
+        if answer_form.answer.data == assessment.answer:
+            flash("Correct!")
+        else:
+            flash("Incorrect!")
+
+    return render_template('AssessmentPage.html', assessment=assessment, answer_form=answer_form)
 
 @app.route('/profile')
 @login_required
@@ -76,3 +92,21 @@ def profile():
 @login_required
 def content():
     return render_template('TeachingPage.html')
+
+@app.route('/create-assessment', methods=['GET', 'POST'])
+def addAssessment():
+    if not current_user.is_admin:
+        return redirect(url_for('index'))
+
+    assessment_form = AddAssessmentForm()
+
+    if assessment_form.validate_on_submit():
+        assessment = Assessment(
+            question=assessment_form.question.data, 
+            answer=assessment_form.answer.data)
+        
+        db.session.add(assessment)
+        db.session.commit()
+        return redirect(url_for('index'))
+        
+    return render_template('AddAssessment.html', assessment_form=assessment_form)

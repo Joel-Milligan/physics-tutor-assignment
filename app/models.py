@@ -1,6 +1,6 @@
-import sqlalchemy
 from sqlalchemy.sql.functions import now
 from sqlalchemy.sql.sqltypes import Boolean, DateTime, Integer, String, Text
+from sqlalchemy.sql.expression import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import db
@@ -44,6 +44,9 @@ class Assessment(db.Model):
 
     def __repr__(self) -> str:
         return f'<Assessment {self.question}'
+
+    def get_random_assessment():
+        return Assessment.query.order_by(func.random()).first()
 
 class UserAssessment(db.Model):
     id = db.Column(db.Integer, primary_key=True)

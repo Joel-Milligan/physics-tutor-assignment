@@ -21,3 +21,12 @@ class RegisterForm(FlaskForm):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError('Please use a different username.')
+
+class AnswerForm(FlaskForm):
+    answer = StringField('Answer', validators=[DataRequired()])
+    submit = SubmitField('Submit Answer')
+
+class AddAssessmentForm(FlaskForm):
+    question = StringField('Please submit a question', validators=[DataRequired()])
+    answer = StringField('Please submit the answer', validators=[DataRequired()])
+    submit = SubmitField('Create Assessment')
