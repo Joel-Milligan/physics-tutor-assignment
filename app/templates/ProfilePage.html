@@ -3,7 +3,7 @@
 <!--Page content -->
 {% block content %}
 <div class="card float-left" style="width: 18rem">
-  <p>placeholder image</p>
+  <img src="{{ current_user.avatar(128) }}" alt="User Profile" width="100%">
   <div class="card-body">
     <h5 class="card-title">{{ current_user.username }}'s Stats</h5>
     <p class="card-text">
