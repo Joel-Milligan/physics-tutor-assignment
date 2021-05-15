@@ -2,17 +2,15 @@
 
 <!--page content-->
 {% block content %}
-<form action="/AddAssessment" method="post">
+<form action="" method="post">
   <p>
-    {{ AddAssessment_form.question.label }}<br />
-    {{ AddAssessment_form.question() }}
+    {{ assessment_form.question.label }}<br />
+    {{ assessment_form.question() }}
   </p>
   <p>
-    {{ AddAssessment_form.answer.label }}<br />
-    {{ AddAssessment_form.answer() }}
+    {{ assessment_form.answer.label }}<br />
+    {{ assessment_form.answer() }}
   </p>
-
-  <p>{{ AddAssessment_form.submit() }}</p>
-  <input type="reset" value="Refresh" />
+  <p>{{ assessment_form.submit() }}</p>
 </form>
 {%endblock%}
