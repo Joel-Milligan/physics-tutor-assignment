@@ -3,7 +3,6 @@ from flask import render_template, flash, redirect, request
 from flask.helpers import url_for
 from flask_login import current_user, login_user, login_required
 from flask_login.utils import logout_user
-from sqlalchemy.sql.functions import now
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegisterForm
