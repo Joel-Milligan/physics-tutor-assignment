@@ -74,8 +74,14 @@ def assessment():
     if answer_form.validate_on_submit():
         if answer_form.answer.data == assessment.answer:
             flash("Correct!")
+            userAssessment = UserAssessment(current_user.id, assessment.id, True, True)
         else:
             flash("Incorrect!")
+            userAssessment = UserAssessment(current_user.id, assessment.id, True, False)
+
+        db.session.add(userAssessment)
+        db.session.commit()
+        return redirect(url_for('assessment'))
 
     return render_template('AssessmentPage.html', assessment=assessment, answer_form=answer_form)
 
