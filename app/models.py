@@ -46,7 +46,7 @@ class Assessment(db.Model):
     def __repr__(self) -> str:
         return f'<Assessment {self.question}'
 
-    def get_random_assessment(self):
+    def get_random_assessment():
         return Assessment.query.order_by(func.random()).first()
 
 class UserAssessment(db.Model):
