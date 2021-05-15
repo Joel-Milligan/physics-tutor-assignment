@@ -54,6 +54,11 @@ def register():
         db.session.commit()
         return redirect(url_for('login'))
 
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('ProfilePage.html')
+
 @app.route('/content')
 @login_required
 def content():
