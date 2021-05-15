@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, login_required
 from flask_login.utils import logout_user
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import AnswerForm, LoginForm, RegisterForm, AddAssessmentForm
+from app.forms import AnswerForm, LoginForm, RegisterForm, AddAssessmentForm, EditProfileForm
 from app.models import User, Assessment, UserAssessment
 
 @app.route('/')
@@ -91,7 +91,12 @@ def profile():
 @app.route('/description', methods=['GET', 'POST'])
 @login_required
 def description():
-    return render_template('EditDescription.html')
+    description_form = EditProfileForm()
+
+    if description_form.validate_on_submit():
+        pass
+
+    return render_template('EditDescription.html', description_form=description_form, old_description=current_user.description)
 
 @app.route('/content')
 @login_required

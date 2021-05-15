@@ -33,3 +33,4 @@ class AddAssessmentForm(FlaskForm):
 
 class EditProfileForm(FlaskForm):
     description = StringField('Enter a new description')
+    submit = SubmitField('Save')
