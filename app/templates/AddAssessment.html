@@ -3,12 +3,13 @@
 <!--page content-->
 {% block content %}
 <form action="" method="post" class="grey_box">
+  <h2 style="color: black">Add an Assessment</h2>
   {{ assessment_form.hidden_tag() }}
-  <p>
+  <p style="color: black">
     {{ assessment_form.question.label }}<br />
     {{ assessment_form.question() }}
   </p>
-  <p>
+  <p style="color: black">
     {{ assessment_form.answer.label }}<br />
     {{ assessment_form.answer() }}
   </p>
