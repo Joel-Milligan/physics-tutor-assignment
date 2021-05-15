@@ -67,16 +67,12 @@ class Assessment(db.Model):
 
         db.session.commit()
 
-    def get_new_assessment(user_id):
-        # Get all uncompleted assessments that are linked to the user
-        completed_assessments = db.session.query(Assessment).filter(
-            User.id == user_id,
-            UserAssessment.completed == False,
-            UserAssessment.user_id == User.id, 
-            UserAssessment.assessment_id == Assessment.id)
+    def get_new_assessment(user_id: int):
+        uncompleted_link = UserAssessment.query.filter(UserAssessment.user_id == user_id, UserAssessment.completed == False).first()
+        if uncompleted_link:
+            return Assessment.query.get(uncompleted_link.assessment_id)
 
-        # Get random assessment that hasn't been completed
-        return completed_assessments.filter().order_by(func.random()).first()
+        return None
 
 class UserAssessment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
