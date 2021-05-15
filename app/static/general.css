@@ -30,6 +30,7 @@ nav {
   background-color: #c4c4c4;
   margin: 5%;
   border-radius: 30px;
+  padding: 5%;
 }
 
 div.grey_box > p {
@@ -37,6 +38,10 @@ div.grey_box > p {
 }
 
 div.grey_box > h2 {
+  color: black;
+}
+
+div.grey_box > h3 {
   color: black;
 }
 
