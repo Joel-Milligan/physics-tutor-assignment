@@ -24,6 +24,14 @@ class User(UserMixin, db.Model):
     def __repr__(self) -> str:
         return f'<User {self.username}>'
 
+    def link_to_assessments(self):
+        assessments: list[Assessment] = db.session.query(Assessment).all()
+        for assessment in assessments:
+            link = UserAssessment(self.id, assessment.id, False, False)
+            db.session.add(link)
+            
+        db.session.commit()
+
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
@@ -51,8 +59,20 @@ class Assessment(db.Model):
     def __repr__(self) -> str:
         return f'<Assessment {self.question}'
 
-    def get_random_assessment():
-        return Assessment.query.order_by(func.random()).first()
+    def link_to_users(self):
+        users: list[User] = User.query.all()
+        for user in users:
+            link = UserAssessment(user.id, self.id, False, False)
+            db.session.add(link)
+
+        db.session.commit()
+
+    def get_new_assessment(user_id: int):
+        uncompleted_link = UserAssessment.query.filter(UserAssessment.user_id == user_id, UserAssessment.completed == False).first()
+        if uncompleted_link:
+            return Assessment.query.get(uncompleted_link.assessment_id)
+
+        return None
 
 class UserAssessment(db.Model):
     id = db.Column(db.Integer, primary_key=True)

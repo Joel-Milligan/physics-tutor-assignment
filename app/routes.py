@@ -13,7 +13,6 @@ from app.models import User, Assessment, UserAssessment
 def index():
     return render_template('HomePage.html')
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -57,8 +56,9 @@ def register():
             password=register_form.password.data, 
             is_admin=register_form.is_admin.data, 
             signup_date=datetime.now())
-        
+
         db.session.add(user)
+        user.link_to_assessments()
         db.session.commit()
         return redirect(url_for('login'))
 
@@ -68,14 +68,27 @@ def navigate():
 
 @app.route('/assessment', methods=['GET','POST'])
 def assessment():
-    assessment: Assessment = Assessment.get_random_assessment()
+    assessment: Assessment = Assessment.get_new_assessment(current_user.id)
+    
+    if assessment is None:
+        flash("No more assessments!")
+        return redirect(url_for('index' ))
+
+    userAssessment: UserAssessment = UserAssessment.query.filter_by(user_id=current_user.id, assessment_id=assessment.id).first()
     answer_form = AnswerForm()
 
     if answer_form.validate_on_submit():
         if answer_form.answer.data == assessment.answer:
             flash("Correct!")
+            userAssessment.completed = True
+            userAssessment.correct = True
         else:
             flash("Incorrect!")
+            userAssessment.completed = True
+            userAssessment.correct = False
+
+        db.session.commit()
+        return redirect(url_for('assessment'))
 
     return render_template('AssessmentPage.html', assessment=assessment, answer_form=answer_form)
 
@@ -120,8 +133,9 @@ def addAssessment():
         assessment = Assessment(
             question=assessment_form.question.data, 
             answer=assessment_form.answer.data)
-        
+
         db.session.add(assessment)
+        assessment.link_to_users()
         db.session.commit()
         return redirect(url_for('index'))
         
