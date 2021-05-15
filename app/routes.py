@@ -11,7 +11,7 @@ from app.models import User
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html')
+    return render_template('HomePage.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -53,3 +53,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login'))
+
+@app.route('/content')
+@login_required
+def content():
+    return render_template('TeachingPage.html')
