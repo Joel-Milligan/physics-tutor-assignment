@@ -24,5 +24,5 @@ class RegisterForm(FlaskForm):
 
 class AddAssessmentForm(FlaskForm):
     question = StringField('Please submit a question', validators=[DataRequired()])
-    answer = DecimalField('Please submit the answer', validators=[DataRequired()])
+    answer = StringField('Please submit the answer', validators=[DataRequired()])
     submit = SubmitField('Create Assessment')
