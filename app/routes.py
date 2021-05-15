@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import render_template, flash, redirect, request
 from flask.helpers import url_for
 from flask_login import current_user, login_user, login_required
+from flask_login.utils import logout_user
 from sqlalchemy.sql.functions import now
 from werkzeug.urls import url_parse
 from app import app, db
@@ -35,6 +36,10 @@ def login():
 
     return render_template('LoginRegisterPage.html', login_form=login_form, register_form=register_form)
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 @app.route('/register', methods=['POST'])
 def register():
