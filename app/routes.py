@@ -68,7 +68,7 @@ def navigate():
 
 @app.route('/assessment', methods=['GET','POST'])
 def assessment():
-    assessment: Assessment = Assessment.get_random_assessment()
+    assessment: Assessment = Assessment.get_new_assessment()
     answer_form = AnswerForm()
 
     if answer_form.validate_on_submit():
