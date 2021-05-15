@@ -6,12 +6,13 @@ from flask_login.utils import logout_user
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegisterForm
-from app.models import User
+from app.models import User, UserAssessment
 
 @app.route('/')
 @login_required
 def index():
     return render_template('HomePage.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -61,7 +62,15 @@ def register():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('ProfilePage.html')
+    num_assessments_completed  = UserAssessment.query.filter_by(user_id = current_user.id, completed = True).count()
+    num_assessments_correct = UserAssessment.query.filter_by(user_id = current_user.id, completed = True, correct = True).count()
+
+    if(num_assessments_completed == 0):
+        percent_correct = 0
+    else:
+        percent_correct = num_assessments_correct / num_assessments_completed
+
+    return render_template('ProfilePage.html', num_assessments_completed =num_assessments_completed, num_assessments_correct = num_assessments_correct, percent_correct = percent_correct)
 
 @app.route('/content')
 @login_required

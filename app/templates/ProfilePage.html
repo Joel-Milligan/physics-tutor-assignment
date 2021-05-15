@@ -10,15 +10,23 @@
       Signed Up on {{ current_user.signup_date.strftime('%x') }}
     </p>
     <h4>Description</h4>
-    <p class="card-text">
-      {{ current_user.description }}
-    </p>
+    <p class="card-text">{{ current_user.description }}</p>
   </div>
 </div>
 
 <!--Assessment Analytics -->
 <div>
-    <h2>Assessment 1 Analytics</h2>
-    <p>placeholder text</p>
+  <h2>Assessments Completed</h2>
+  <p>{{num_assessments_completed}}</p>
+</div>
+
+<div>
+  <h2>Assessments Correct</h2>
+  <p>{{num_assessments_correct}}</p>
+</div>
+
+<div>
+  <h2>Percentage Correct</h2>
+  <p>{{ percent_correct }}</p>
 </div>
 {% endblock%}
