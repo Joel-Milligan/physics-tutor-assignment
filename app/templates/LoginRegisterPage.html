@@ -33,36 +33,37 @@
 
 <!-- Tab links -->
 <div class="container card-body" style="margin: auto">
-<div class="row">
-
-  <div
-    class="tab col-sm-4 mx-auto"
-    style="
-      border-style: solid;
-      border-color: #c4c4c4;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      border: 10px;
-      border-bottom: 0px;
-    "
-  >
-    <button
-      class="tablinks"
-      style="margin: auto"
-      onclick="openTab(event, 'Login')"
-      id="defaultOpen"
+  <div class="row">
+    <div
+      class="tab col-sm-4 mx-auto"
+      style="
+        border-style: solid;
+        border-color: #c4c4c4;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border: 10px;
+        border-bottom: 0px;
+      "
     >
-      Login
-    </button>
-    <button
-      class="tablinks"
-      style="margin: auto"
-      onclick="openTab(event, 'Register')"
-    >
-      Register
-    </button>
+      <div class="row">
+        <button
+          class="tablinks col-sm-6"
+          style="margin: auto"
+          onclick="openTab(event, 'Login')"
+          id="defaultOpen"
+        >
+          Login
+        </button>
+        <button
+          class="tablinks col-sm-6"
+          style="margin: auto"
+          onclick="openTab(event, 'Register')"
+        >
+          Register
+        </button>
+      </div>
+    </div>
   </div>
-</div>
 
   <div class="row">
     <!-- Tab content -->
@@ -75,7 +76,7 @@
         border-color: #f1f1f1;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
-        padding-bottom: 5%;
+        padding-bottom: 10px;
         border-width: 10px;
         border-top-width: 0px;
       "
@@ -106,7 +107,7 @@
         border-color: #f1f1f1;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
-        padding-bottom: 5%;
+        padding-bottom: 10px;
         border-width: 10px;
         border-top-width: 0px;
       "
@@ -116,7 +117,7 @@
         {{ register_form.hidden_tag() }}
         <p>
           {{ register_form.username.label }}<br />
-          {{ register_form.username(size=32,class="form-control") }}<br />
+          {{ register_form.username(size=32,class="form-control") }}
           <!-- Display any errors -->
           {% for error in register_form.username.errors %}
           <span style="color: red">[{{ error }}]</span>
@@ -124,7 +125,7 @@
         </p>
         <p>
           {{ register_form.password.label }}<br />
-          {{ register_form.password(size=32,class="form-control") }}<br />
+          {{ register_form.password(size=32,class="form-control") }}
           <!-- Display any errors -->
           {% for error in register_form.password.errors %}
           <span style="color: red">[{{ error }}]</span>
@@ -132,7 +133,7 @@
         </p>
         <p>
           {{ register_form.confirm_password.label }}<br />
-          {{ register_form.confirm_password(size=32,class="form-control") }}<br />
+          {{ register_form.confirm_password(size=32,class="form-control") }}
           <!-- Display any errors -->
           {% for error in register_form.confirm_password.errors %}
           <span style="color: red">[{{ error }}]</span>
