@@ -62,6 +62,10 @@ def register():
         db.session.commit()
         return redirect(url_for('login'))
 
+@app.route('/assessment-navigator')
+def navigate():
+    return render_template('AssessmentNavigator.html')
+
 @app.route('/assessment', methods=['GET','POST'])
 def assessment():
     assessment: Assessment = Assessment.get_random_assessment()
