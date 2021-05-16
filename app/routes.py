@@ -63,10 +63,12 @@ def register():
         return redirect(url_for('login'))
 
 @app.route('/assessment-navigator')
+@login_required
 def navigate():
     return render_template('AssessmentNavigator.html')
 
 @app.route('/assessment', methods=['GET','POST'])
+@login_required
 def assessment():
     assessment: Assessment = Assessment.get_new_assessment(current_user.id)
     
