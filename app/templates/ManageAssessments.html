@@ -2,12 +2,14 @@
 
 <!-- Page Content -->
 {% block content %}
-<h1>Assessment List</h1>
+<h1 style = "text-align:center">Assessment List</h1>
 <ul>
     {% for assessment in assessments %}
+    <div class="grey_box">
     <h2>Assessment {{ assessment.id }}</h2>
     <li> Question : {{ assessment.question }}</li>
     <li> Answer : {{ assessment.answer }}</li>
+    </div>
     {% endfor %}
 </ul>
 {% endblock %}
