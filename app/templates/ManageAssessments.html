@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+<!-- Page Content -->
+{% block content %}
+<h1 style = "text-align:center">Assessment List</h1>
+<ul class="list-unstyled">
+    {% for assessment in assessments %}
+    <li>
+    <div class="grey_box">
+    <h2>Assessment {{ assessment.id }}</h2>
+    <h3>Question</h3>
+    <p>{{ assessment.question }}</p>
+    <h3>Answer</h3>
+    <p>{{ assessment.answer }}</p>
+
+    <form method="post" action="{{ url_for('deleteAssessment', id=assessment.id) }}">
+        <input type="submit" class="btn btn-danger" value="Delete Assessment" >
+    </form>
+    </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

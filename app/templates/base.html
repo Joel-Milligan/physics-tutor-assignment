@@ -54,10 +54,14 @@
                 <a class="nav-link nav-item" href="{{ url_for('content') }}">Content</a>
                 <a class="nav-link nav-item" href="{{ url_for('navigate') }}">Assessments</a>
               {% if current_user.is_admin %}
-                <a class="nav-link nav-item" href="{{ url_for('addAssessment') }}"
-                  >Create Assessment</a
-                >
-              {% endif %} {% if current_user.is_anonymous %}
+                <a class="nav-link nav-item" href="{{ url_for('addAssessment') }}">
+                  Create Assessment
+                </a>
+                <a class="nav-link nav-item" href="{{ url_for('manageAssessments') }}">
+                  Manage Assessments
+                </a>
+              {% endif %}
+              {% if current_user.is_anonymous %}
                 <a class="nav-link nav-item" href="{{ url_for('login') }}">Login</a>
               {% else %}
                 <a class="nav-link nav-item" href="{{ url_for('profile') }}">Profile</a>

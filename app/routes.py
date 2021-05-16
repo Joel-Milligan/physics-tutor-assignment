@@ -130,6 +130,7 @@ def content():
     return render_template('TeachingPage.html')
 
 @app.route('/create-assessment', methods=['GET', 'POST'])
+@login_required
 def addAssessment():
     if not current_user.is_admin:
         return redirect(url_for('index'))
@@ -148,3 +149,16 @@ def addAssessment():
         return redirect(url_for('index'))
 
     return render_template('AddAssessment.html', assessment_form=assessment_form)
+
+@app.route('/manage-assessments')
+@login_required
+def manageAssessments():
+    assessments = Assessment.query.all()
+    return render_template('ManageAssessments.html', assessments=assessments)
+
+@app.route('/delete-assessment/<id>', methods=['POST'])
+@login_required
+def deleteAssessment(id):
+    Assessment.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('manageAssessments'))
