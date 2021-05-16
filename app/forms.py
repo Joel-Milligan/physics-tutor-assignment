@@ -3,6 +3,10 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, EqualTo
 from app.models import User
 
+def answer_integer(form, field: StringField):
+    if not field.data.isdigit():
+        raise ValidationError("Answer must be a whole number")
+
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -22,15 +26,15 @@ class RegisterForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different username.')
 
+class EditProfileForm(FlaskForm):
+    description = StringField('Enter a new description')
+    submit = SubmitField('Save')
+
 class AnswerForm(FlaskForm):
-    answer = StringField('Answer', validators=[DataRequired()])
+    answer = StringField('Answer', validators=[DataRequired(), answer_integer])
     submit = SubmitField('Submit Answer')
 
 class AddAssessmentForm(FlaskForm):
     question = StringField('Please submit a question', validators=[DataRequired()])
-    answer = StringField('Please submit the answer', validators=[DataRequired()])
+    answer = StringField('Please submit the answer', validators=[DataRequired(), answer_integer])
     submit = SubmitField('Create Assessment')
-
-class EditProfileForm(FlaskForm):
-    description = StringField('Enter a new description')
-    submit = SubmitField('Save')

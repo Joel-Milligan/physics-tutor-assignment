@@ -12,6 +12,9 @@
   <p style="color: black">
     {{ assessment_form.answer.label }}<br />
     {{ assessment_form.answer() }}
+    {% for error in assessment_form.answer.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
   </p>
   <p>{{ assessment_form.submit() }}</p>
 </form>

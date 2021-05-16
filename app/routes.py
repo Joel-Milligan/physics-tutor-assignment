@@ -38,7 +38,8 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    flash("Successfully logged out.")
+    return redirect(url_for('login'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -60,7 +61,11 @@ def register():
         db.session.add(user)
         user.link_to_assessments()
         db.session.commit()
-        return redirect(url_for('login'))
+        flash(f"Successfully registered user: {user.username}")
+    else:
+        flash("Could not register user")
+        
+    return redirect(url_for('login'))
 
 @app.route('/assessment-navigator')
 @login_required
@@ -139,6 +144,7 @@ def addAssessment():
         db.session.add(assessment)
         assessment.link_to_users()
         db.session.commit()
+        flash("Successfully created assessment.")
         return redirect(url_for('index'))
-        
+
     return render_template('AddAssessment.html', assessment_form=assessment_form)
