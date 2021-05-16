@@ -18,6 +18,10 @@ h3 {
   color: white;
 }
 
+.navbar-collapse.collapse.in {
+  display: block !important;
+}
+
 p {
   color: white;
 }
