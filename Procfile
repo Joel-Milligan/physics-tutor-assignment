@@ -1,1 +1,1 @@
-web: flask db upgrade; gunicorn physics-tutor:app
+web: flask db upgrade; python create-assessments.py; gunicorn physics-tutor:app
