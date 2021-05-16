@@ -144,6 +144,7 @@ def addAssessment():
         db.session.add(assessment)
         assessment.link_to_users()
         db.session.commit()
+        flash("Successfully created assessment.")
         return redirect(url_for('index'))
-        
+
     return render_template('AddAssessment.html', assessment_form=assessment_form)
