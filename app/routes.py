@@ -60,7 +60,11 @@ def register():
         db.session.add(user)
         user.link_to_assessments()
         db.session.commit()
-        return redirect(url_for('login'))
+        flash(f"Successfully registered user: {user.username}")
+    else:
+        flash("Could not register user")
+        
+    return redirect(url_for('login'))
 
 @app.route('/assessment-navigator')
 @login_required
