@@ -31,7 +31,7 @@ class EditProfileForm(FlaskForm):
     submit = SubmitField('Save')
 
 class AnswerForm(FlaskForm):
-    answer = StringField('Answer', validators=[DataRequired()])
+    answer = StringField('Answer', validators=[DataRequired(), answer_integer])
     submit = SubmitField('Submit Answer')
 
 class AddAssessmentForm(FlaskForm):
