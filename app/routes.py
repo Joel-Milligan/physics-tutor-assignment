@@ -148,3 +148,8 @@ def addAssessment():
         return redirect(url_for('index'))
 
     return render_template('AddAssessment.html', assessment_form=assessment_form)
+
+@app.route('/manage-assessments')
+def manageAssessments():
+    assessments = Assessment.query.all()
+    return render_template('ManageAssessments.html', assessments=assessments)
