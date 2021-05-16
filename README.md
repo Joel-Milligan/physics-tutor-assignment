@@ -69,8 +69,3 @@ To launch the web application follow the below list, from top to bottom.
 - source venv/bin/activate
 - pip install -r requirements.txt
 - flask run
-
-# Testing
-
-- Launch the application as above
-- python -m pytest
