@@ -1,6 +1,6 @@
 # Physics Tutor
 
-CITS3403 Assignment: Physics tutor built with jQuery and W3.CSS on the frontend and Flask on the backend.
+CITS3403 Assignment: Physics tutor built with jinja and Bootstrap on the frontend and Flask on the backend.
 
 # Requirements
 
@@ -41,6 +41,11 @@ These were for very basic structure of the site, and as such most of the content
 
 # Development
 
+## Testing the application
+
+- Launch app as described in the "Launching" section of this README
+- python -m pytest
+
 ## Git Flow
 
 For source control management, we used a stripped down version of the "Git Flow" methodology, as described in this [web page](https://www.gitkraken.com/learn/git/git-flow).
@@ -58,7 +63,32 @@ We have created 2 projects, one for front end development and one for backend de
 
 Automation has been setup on these projects to automatically move cards between columns on certain events such as pull requests, merges, or issue creation.
 
-# Architecture
+# Structure
+
+## Root Folder
+
+The root of the repository contains the following:
+
+- Project meta-data
+  - README.md = Information about the project
+  - Procfile = Heroku Deployment Requirement
+  - commits.txt = Git Logs
+  - .flaskenv = Environment variables for development
+- Application entry point (physics-tutor.py)
+- create-assessments.py = Script to create sample assessments
+- app = Main application source code.
+- migrations = Setting up the sqlite database
+- tests
+  - unit = Unit tests
+  - integration = Selenium tests
+- wireframes = Initial wireframing from design process
+
+## Application Architecture
+
+In this flask application we used an MVC structure.
+The models are in models.py, using SQLAlchemy
+The views are in the templates folder and forms.py, handled by jinja
+The controllers are in routes.py.
 
 # Launching
 
