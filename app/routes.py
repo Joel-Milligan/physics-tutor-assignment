@@ -155,3 +155,10 @@ def addAssessment():
 def manageAssessments():
     assessments = Assessment.query.all()
     return render_template('ManageAssessments.html', assessments=assessments)
+
+@app.route('/delete-assessment/<id>', methods=['POST'])
+@login_required
+def deleteAssessment(id):
+    Assessment.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('manageAssessments'))

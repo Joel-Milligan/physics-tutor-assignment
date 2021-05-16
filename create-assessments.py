@@ -11,17 +11,6 @@ with an acceleration of 0.5m/s^2,
 how long does it take for them to stop moving/ have a final speed of 0. Do not put units in your answer.""", 
     answer="10"))
 
-assessments.append(Assessment(
-    question="""If a car had an initial velocity 10m/s,
-speeds up with an acceleration of 1 m/s^2 for 10 seconds
-how far did it travel? Do not put units in your answer.""", 
-    answer="150"))
-
-assessments.append(Assessment(
-    question="""If a car had an initial velocity 10m/s,
-speeds up with an acceleration of 1 m/s^2 for 10 seconds
-how far did it travel? Do not put units in your answer.""", 
-    answer="150"))
 
 assessments.append(Assessment(
     question="""If a cat had an initial velocity 3m/s,
@@ -43,12 +32,6 @@ speeds up with an acceleration of 1 m/s^2 for 10 seconds
 how far did it travel? Do not put units in your answer.""", 
     answer="150"))
 
-assessments.append(Assessment(
-    question="""If a peregrine falcon dives with a final velocity 90m/s,
-if it started at rest(with a initial velocity of 0m/s)
-if it took 3 seconds to go from rest to final velocity,
-what was its acceleration? Do not put units in your answer.""", 
-    answer="30"))
 
 assessments.append(Assessment(
     question="""If a peregrine falcon dives with a final velocity 90m/s,
