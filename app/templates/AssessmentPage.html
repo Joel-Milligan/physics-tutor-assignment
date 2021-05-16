@@ -12,9 +12,10 @@
   <p style="color: black">
     {{ answer_form.answer.label }}<br />
     {{ answer_form.answer(size=32) }}<br />
+    {% for error in answer_form.answer.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
   </p>
   <p>{{ answer_form.submit() }}</p>
 </form>
-
-{% with messages = get_flashed_messages() %} {% if messages %} {% for message in
-messages %} {{ message }} {% endfor %} {% endif %} {% endwith %} {% endblock %}
+{% endblock %}

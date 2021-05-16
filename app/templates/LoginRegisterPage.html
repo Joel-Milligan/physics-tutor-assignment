@@ -5,28 +5,7 @@
   rel="stylesheet"
   href="{{ url_for('static', filename='css/LoginRegisterPage.css') }}"
 />
-<script>
-  function openTab(evt, TabName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(TabName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-</script>
+<script type=text/javascript src="{{ url_for('static', filename='js/LoginRegisterPage.js') }}"></script>
 {% endblock %}
 <!--Block Content-->
 {% block content %}
@@ -86,11 +65,17 @@
         {{ login_form.hidden_tag() }}
         <p>
           {{ login_form.username.label }}<br />
-          {{ login_form.username(size=32,class="form-control") }}
+          {{ login_form.username(size=32,class="form-control") }}<br>
+          {% for error in login_form.username.errors %}
+          <span>[{{ error }}]</span>
+          {% endfor %}
         </p>
         <p>
           {{ login_form.password.label }}<br />
-          {{ login_form.password(size=32,class="form-control") }}
+          {{ login_form.password(size=32,class="form-control") }}<br>
+          {% for error in login_form.password.errors %}
+          <span>[{{ error }}]</span>
+          {% endfor %}
         </p>
         <p>{{ login_form.remember_me() }} {{ login_form.remember_me.label }}</p>
         <p>{{ login_form.submit(class="form-control") }}</p>
