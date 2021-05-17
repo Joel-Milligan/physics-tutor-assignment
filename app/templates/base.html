@@ -51,7 +51,7 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link nav-item active" href="{{ url_for('index') }}">Home</a>
-                <a class="nav-link nav-item" href="{{ url_for('content') }}">Content</a>
+                <a class="nav-link nav-item" href="{{ url_for('content') }}">Learning Material</a>
                 <a class="nav-link nav-item" href="{{ url_for('navigate') }}">Assessments</a>
               {% if current_user.is_admin %}
                 <a class="nav-link nav-item" href="{{ url_for('addAssessment') }}">
