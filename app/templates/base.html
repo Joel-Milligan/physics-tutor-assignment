@@ -60,6 +60,9 @@
                 <a class="nav-link nav-item" href="{{ url_for('manageAssessments') }}">
                   Manage Assessments
                 </a>
+                <a class="nav-link nav-item" href="{{ url_for('manageUsers') }}">
+                  Manage Users
+                </a>
               {% endif %}
               {% if current_user.is_anonymous %}
                 <a class="nav-link nav-item" href="{{ url_for('login') }}">Login</a>

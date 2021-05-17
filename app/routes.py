@@ -174,4 +174,4 @@ def manageUsers():
 def deleteUser(id):
     User.query.filter_by(id=id).delete()
     db.session.commit()
-    return redirect(url_for('manageUser'))
+    return redirect(url_for('manageUsers'))
