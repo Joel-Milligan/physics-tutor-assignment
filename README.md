@@ -41,6 +41,8 @@ These were for very basic structure of the site, and as such most of the content
 
 # Development
 
+Our repository is on GitHub at https://github.com/Joel-Milligan/physics-tutor-assignment
+
 ## Testing the application
 
 - Launch app as described in the "Launching" section of this README
@@ -99,3 +101,8 @@ To launch the web application follow the below list, from top to bottom.
 - source venv/bin/activate
 - pip install -r requirements.txt
 - flask run
+
+## Heroku Deployment
+
+Alternatively you can go to https://physics-tutor.herokuapp.com/ to view the web app.
+Please note that this deployment is not working as well as running the application locally due to issues specific to deployment, so we would prefer to be marked on the local version.
