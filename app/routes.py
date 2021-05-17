@@ -162,3 +162,16 @@ def deleteAssessment(id):
     Assessment.query.filter_by(id=id).delete()
     db.session.commit()
     return redirect(url_for('manageAssessments'))
+
+@app.route('/manage-user')
+@login_required
+def manageUsers():
+    users = User.query.all()
+    return render_template('ManageUsers.html', users=users)
+
+@app.route('/delete-user/<id>', methods=['POST'])
+@login_required
+def deleteUser(id):
+    User.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('manageUser'))
