@@ -100,6 +100,7 @@ To launch the web application follow the below list, from top to bottom.
 - python3 -m venv venv
 - source venv/bin/activate
 - pip install -r requirements.txt
+- flask db upgrade
 - flask run
 
 ## Heroku Deployment
