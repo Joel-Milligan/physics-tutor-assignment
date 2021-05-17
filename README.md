@@ -41,7 +41,7 @@ These were for very basic structure of the site, and as such most of the content
 
 # Development
 
-Our repository is on GitHub at https://github.com/Joel-Milligan/physics-tutor-assignment
+Our repository is on GitHub at https://github.com/Joel-Milligan/physics-tutor-assignment.
 
 ## Testing the application
 
